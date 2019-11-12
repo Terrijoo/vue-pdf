@@ -8,9 +8,9 @@ export default function(pdfjsWrapper) {
 	return {
 		createLoadingTask: createLoadingTask,
 		render: function(h) {
-			return h('span', {
+			return h('div', {
 				attrs: {
-					style: 'position: relative; display: inline-block'
+					style: 'position: relative; width: 100%; display: inline-block'
 				}
 			}, [
 				h('canvas', {
