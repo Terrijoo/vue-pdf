@@ -33,13 +33,20 @@ export default function(PDFJS) {
 
 
 	function PDFJSWrapper(canvasElt, annotationLayerElt, emitEvent) {
-
+		this.options = {};
 		var pdfDoc = null;
 		var pdfPage = null;
 		var pdfRender = null;
 		var canceling = false;
 
 		canvasElt.getContext('2d').save();
+		this.getDocument = function() {
+			return pdfDoc;
+		};
+
+		this.getPage = function() {
+			return pdfPage
+		};
 
 		function clearCanvas() {
 
@@ -225,9 +232,9 @@ export default function(PDFJS) {
 					annotations: annotations,
 					page: pdfPage,
 					linkService: linkService,
-					renderInteractiveForms: false
+					renderInteractiveForms: this.options.renderInteractiveForms ? this.options.renderInteractiveForms : false
 				});
-			});
+			}.bind(this));
 
 			pdfRender
 			.then(function() {

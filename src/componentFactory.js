@@ -46,6 +46,10 @@ export default function(pdfjsWrapper) {
 			rotate: {
 				type: Number,
 			},
+			enableForms: {
+				type: Boolean,
+				default: false
+			}
 		},
 		watch: {
 			src: function() {
@@ -59,6 +63,11 @@ export default function(pdfjsWrapper) {
 			rotate: function() {
 				this.pdf.renderPage(this.rotate);
 			},
+			enableForms: function() {
+				this.pdf.options.renderInteractiveForms = this.enableForms;
+				// re-render
+				this.pdf.renderPage(this.rotate);
+			}
 		},
 		methods: {
 			resize: function(size) {
@@ -87,6 +96,7 @@ export default function(pdfjsWrapper) {
 		mounted: function() {
 
 			this.pdf = new PDFJSWrapper(this.$refs.canvas, this.$refs.annotationLayer, this.$emit.bind(this));
+			this.pdf.options.renderInteractiveForms = this.enableForms;
 
 			this.$on('loaded', function() {
 
