@@ -22,7 +22,7 @@
   "dependencies": {
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "loader-utils": "^1.2.3",
-    "pdfjs-dist": "github:Terrijoo/pdfjs-dist#bc78004d7e37638d121f208dd5c3be81fae44a6c",
+    "pdfjs-dist": "github:Terrijoo/pdfjs-dist#12782c8365cf4d2b0253c5bfa32fff0ce91aaf49",
     "raw-loader": "^0.5.1",
     "vue-resize-sensor": "^2.0.0"
   }
